@@ -11,6 +11,9 @@ IHostBuilder builder = Host.CreateDefaultBuilder(args);
 builder.ConfigureServices(services =>
 {
     services.AddSingleton<INotificator<DepositUserCaseMessage>, ConsoleNotificator<DepositUserCaseMessage>>();
+    services.AddScoped<INotificator, ConsoleNotificator2>();
+    services.AddScoped<INotificatorSimple, ConsoleNotificatorSimple>();
+
     services.AddSingleton<DepositUserCase<Deposit>>();
     services.AddHostedService<Worker>();
 });
